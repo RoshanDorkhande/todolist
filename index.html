@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .action-container{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .list-container{
+            background-color: #D9AFD9;
+            background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+            width: 300px;
+            height: 250px;
+            overflow-y: scroll;
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .todo-item{
+            background-color: #FBAB7E;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+            padding: 5px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .btn{
+            padding: 5px;
+            border: none;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #FBAB7E;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="list-container" id ="list-container">
+
+    </div>
+
+    <div class="action-container">
+
+        <input type="text" id="input-todo">
+        <button onclick="add()" class="btn">ADD</button>
+    </div>
+
+
+    <script>
+        const todolist = [];
+
+        function add()
+        {
+            const inputElement = document.getElementById("input-todo");
+
+            todolist.push(inputElement.value)
+
+            inputElement.value = ""
+
+            renderTodoList()
+        }
+
+        function renderTodoList()
+        {
+            const listcontainer = document.getElementById("list-container");
+            listcontainer.innerHTML = "";
+
+            for(const todoitem of todolist)
+            {
+                listcontainer.innerHTML += `<div class="todo-item">
+                    <input type="checkbox" />
+                    ${todoitem}
+                    </div>`
+            }
+        }
+        
+    </script>
+</body>
+</html>
